@@ -13,7 +13,7 @@ namespace StatementTollWindow
         public static OleDbCommand sqlFreshTunes(OleDbConnection connection, string artistName)
         {
             OleDbCommand command = new OleDbCommand
-            ($"SELECT [Artist Name],[Platform],[Amount],[Sale count],[Date] FROM [Sheet1$] WHERE [Artist Name] = '{artistName}'");
+            ($"SELECT [Artist Name],[Album Name],[Platform],[Sale count],[Amount],[Date] FROM [Sheet1$] WHERE [Artist Name] = '{artistName}'");
             command.Connection = connection;
             command.CommandType = CommandType.Text;
             return command;
@@ -22,7 +22,7 @@ namespace StatementTollWindow
         public static OleDbCommand sqlNda(OleDbConnection connection, string artistName)
         {
             OleDbCommand command = new OleDbCommand
-      ($"SELECT [Исполнитель],[Период использования контента],[Площадка],[Sales],[Total] FROM [1 Детализированный отчет$] WHERE [Исполнитель] = '{artistName}'");
+      ($"SELECT [Исполнитель],[Название альбома],[Площадка],[Sales],[Total],[Период использования контента] FROM [1 Детализированный отчет$] WHERE [Исполнитель] = '{artistName}'");
             command.Connection = connection;
             command.CommandType = CommandType.Text;
             return command;

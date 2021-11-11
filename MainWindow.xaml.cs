@@ -24,17 +24,16 @@ namespace StatementTollWindow
     {
       
         string artistName { get; set; }
-        string filepath;
+        string filepath { get; set; }
         string workingfile;
         string sourceType = "";
+
         public MainWindow()
         {
             InitializeComponent();
             this.Closed += MainWindow_Closed;
             this.Closing += MainWindow_Closing;
-            
-            
-            
+          
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -95,6 +94,7 @@ namespace StatementTollWindow
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             artistName = artistBox.Text;
+            MessageBox.Show("Выбранное имя артиста: " + artistName);
         }
 
         private void MakeReport_Click(object sender, RoutedEventArgs e)
@@ -136,17 +136,7 @@ namespace StatementTollWindow
                 dataReader.Close();
             }
 
-            //string fileText = "Your output text";
-
-            //SaveFileDialog dialog = new SaveFileDialog()
-            //{
-            //    Filter = "Text Files(*.txt)|*.txt|All(*.*)|*"
-            //};
-
-            //if (dialog.ShowDialog() == true)
-            //{
-            //    File.WriteAllText(dialog.FileName, fileText);
-            //}
+         
 
 
         }
