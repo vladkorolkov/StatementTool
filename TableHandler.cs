@@ -39,7 +39,7 @@ namespace StatementTollWindow
 
                 ws.Range("A1:H1").Rows().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 ws.Range("A1:H1").Rows().Style.Font.Bold = true;
-                
+                ws.Columns(1, 8).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 
                 //ws.Range("A:H").Columns().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 
