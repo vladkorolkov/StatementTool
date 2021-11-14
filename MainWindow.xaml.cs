@@ -67,8 +67,7 @@ namespace StatementTollWindow
         }
 
         private void FT_Checked(object sender, RoutedEventArgs e)
-        {
-      
+        {     
             sourceType = "FT";
             workingfile = RowsTrimmer.TrimRows(filepath, "L3", "Sheet1", tempPath);       
         }
@@ -88,12 +87,10 @@ namespace StatementTollWindow
 
         private void MakeReport_Click(object sender, RoutedEventArgs e)
         {
-
             string constring = $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={workingfile};Extended Properties=\'Excel 12.0 Xml;HDR=YES;IMEX=2\'";
             OleDbConnection connection = new OleDbConnection(constring);
             connection.Open();
-            
-            
+                        
                 if (sourceType == "FT")
                 {
                     OleDbDataReader dataReader = Commands.sqlFreshTunes(connection, artistName).ExecuteReader();
@@ -106,8 +103,6 @@ namespace StatementTollWindow
                         var filename = sfd.FileName;
                         TableHandler.resultTableHandler(dataReader, connection, artistName, sourceType, filename);
                     }
-
-
                     dataReader.Close();
                 }
                 if (sourceType == "NDA")
@@ -124,6 +119,7 @@ namespace StatementTollWindow
                     }
                     dataReader.Close();
                 }
+
             connection.Close();
             File.Delete(tempPath);
             
