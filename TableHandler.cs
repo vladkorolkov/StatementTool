@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace StatementTollWindow
 {
@@ -25,6 +26,7 @@ namespace StatementTollWindow
                     ws.Cell(counter, "D").Value = dataReader[3];
                     ws.Cell(counter, "E").Value = Math.Round(Convert.ToSingle(dataReader[4]),3);
                     ws.Cell(counter, "F").Value = dataReader[5];
+                    
                     counter++;
                 }
 
@@ -40,13 +42,10 @@ namespace StatementTollWindow
                 ws.Range("A1:H1").Rows().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                 ws.Range("A1:H1").Rows().Style.Font.Bold = true;
                 ws.Columns(1, 8).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                
-                //ws.Range("A:H").Columns().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                
-                
-
+  
                 dataReader.Close();
-
+            try
+            {
                 if (src == "NDA")
                 {
                     OleDbCommand sumCommand = new OleDbCommand($"SELECT SUM([Sales]),SUM([Total]) FROM [1 Детализированный отчет$] WHERE [Исполнитель] = '{artistName}'");
@@ -58,11 +57,11 @@ namespace StatementTollWindow
                         var resultG = Convert.ToSingle(dataReader[0]); // конвертация для того чтобы округление сработало                   
                         ws.Cell("G2").Value = Math.Round(resultG, 2);
                         var resultH = Convert.ToSingle(dataReader[1]);
-                        ws.Cell("H2").Value = Math.Round(resultH,2);
+                        ws.Cell("H2").Value = Math.Round(resultH, 2);
                     }
                     dataReader.Close();
                 }
-               
+
                 if (src == "FT")
                 {
                     OleDbCommand sumCommand = new OleDbCommand($"SELECT SUM([Sale count]),SUM([Amount]) FROM [Sheet1$] WHERE [Artist name] = '{artistName}'");
@@ -75,14 +74,19 @@ namespace StatementTollWindow
                         ws.Cell("G2").Value = Math.Round(resultG, 2);
                         var resultH = Convert.ToSingle(dataReader[1]);
                         ws.Cell("H2").Value = Math.Round(resultH, 2);
-                   
+
                     }
                     dataReader.Close();
                 }
-            //workbook.SaveAs(@"C:\Users\vladi\source\repos\HelloWorld.xlsx");                
-            
+                              
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Артиста с именем {artistName} не существует.");
+            }
             workbook.SaveAs(filename);
-            // workbook.Save();
+           
            
            
 

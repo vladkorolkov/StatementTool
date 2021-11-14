@@ -11,12 +11,12 @@ namespace StatementTollWindow
     class Commands
     {
         public static OleDbCommand sqlFreshTunes(OleDbConnection connection, string artistName)
-        {
-            OleDbCommand command = new OleDbCommand
-            ($"SELECT [Artist Name],[Album Name],[Platform],[Sale count],[Amount],[Date] FROM [Sheet1$] WHERE [Artist Name] = '{artistName}'");
-            command.Connection = connection;
-            command.CommandType = CommandType.Text;
-            return command;
+        {   
+             OleDbCommand command = new OleDbCommand
+             ($"SELECT [Artist Name],[Album Name],[Platform],[Sale count],[Amount],[Date] FROM [Sheet1$] WHERE [Artist Name] = '{artistName}'");
+             command.Connection = connection;
+             command.CommandType = CommandType.Text;
+             return command;     
         }
 
         public static OleDbCommand sqlNda(OleDbConnection connection, string artistName)

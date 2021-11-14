@@ -23,4 +23,3 @@ C:\Users\vladi\source\repos\StatementTool2\StatementTollWindow\obj\x64\Debug\Sta
 C:\Users\vladi\source\repos\StatementTool2\StatementTollWindow\obj\x64\Debug\StatementTollWindow.csproj.CopyComplete
 C:\Users\vladi\source\repos\StatementTool2\StatementTollWindow\obj\x64\Debug\StatementTollWindow.exe
 C:\Users\vladi\source\repos\StatementTool2\StatementTollWindow\obj\x64\Debug\StatementTollWindow.pdb
-C:\Users\vladi\source\repos\StatementTool2\StatementTollWindow\obj\x64\Debug\StatementTollWindow.csprojAssemblyReference.cache
